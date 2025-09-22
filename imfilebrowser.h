@@ -853,8 +853,10 @@ inline void ImGui::FileBrowser::Display()
         Text("%s", statusStr_.c_str());
         if (ImGui::IsItemHovered())
         {
-            ImGui::BeginTooltip();
-            ImGui::TextWrapped("%s", statusStr_.c_str());
+            ImGui::BeginTooltip();            
+            ImGui::PushTextWrapPos(200.0f); // wrap at 200 pixels
+            ImGui::Text("%s", statusStr_.c_str());
+            ImGui::PopTextWrapPos();
             ImGui::EndTooltip();
         }
     }
