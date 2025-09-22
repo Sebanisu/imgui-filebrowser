@@ -1023,11 +1023,12 @@ inline void ImGui::FileBrowser::UpdateFileRecords()
     const auto get_directory_iterator = [&]() -> std::filesystem::directory_iterator
     {
         try
-        {
+        {            
             return std::filesystem::directory_iterator(currentDirectory_);
         }
-        catch (const std::filesystem::filesystem_error&)
-        {
+        catch (const std::filesystem::filesystem_error& err)
+        {            
+            statusStr_ = std::string("error: ") + err.what();
             if (!(flags_ & ImGuiFileBrowserFlags_SkipItemsCausingError))
             {
                 throw;
