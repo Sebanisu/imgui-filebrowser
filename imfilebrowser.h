@@ -851,7 +851,7 @@ inline void ImGui::FileBrowser::Display()
     {
         SameLine();
         Text("%s", statusStr_.c_str());
-        if (!statusStr_.empty() && ImGui::IsItemHovered())
+        if (ImGui::IsItemHovered())
         {
             ImGui::SetTooltip("%s", statusStr_.c_str());
         }
