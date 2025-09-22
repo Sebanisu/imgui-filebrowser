@@ -853,7 +853,9 @@ inline void ImGui::FileBrowser::Display()
         Text("%s", statusStr_.c_str());
         if (ImGui::IsItemHovered())
         {
-            ImGui::SetTooltip("%s", statusStr_.c_str());
+            ImGui::BeginTooltip();
+            ImGui::TextWrapped("%s", statusStr_.c_str());
+            ImGui::EndTooltip();
         }
     }
 
