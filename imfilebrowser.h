@@ -854,7 +854,7 @@ inline void ImGui::FileBrowser::Display()
         if (ImGui::IsItemHovered())
         {
             ImGui::BeginTooltip();            
-            ImGui::PushTextWrapPos(200.0f); // wrap at 200 pixels
+            ImGui::PushTextWrapPos(300.0f);
             ImGui::Text("%s", statusStr_.c_str());
             ImGui::PopTextWrapPos();
             ImGui::EndTooltip();
