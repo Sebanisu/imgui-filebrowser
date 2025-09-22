@@ -1020,7 +1020,23 @@ inline void ImGui::FileBrowser::UpdateFileRecords()
 {
     fileRecords_ = { FileRecord{ true, "..", "[D] ..", "" } };
 
-    for(auto &p : std::filesystem::directory_iterator(currentDirectory_))
+    const auto get_directory_iterator = [&]() -> std::filesystem::directory_iterator
+    {
+        try
+        {
+            return std::filesystem::directory_iterator(currentDirectory_);
+        }
+        catch (const std::filesystem::filesystem_error&)
+        {
+            if (!(flags_ & ImGuiFileBrowserFlags_SkipItemsCausingError))
+            {
+                throw;
+            }
+            return {};
+        }
+    };
+
+    for(auto &p : get_directory_iterator())
     {
         FileRecord rcd;
         try
