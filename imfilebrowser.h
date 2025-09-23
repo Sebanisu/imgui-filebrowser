@@ -1028,7 +1028,7 @@ inline void ImGui::FileBrowser::UpdateFileRecords()
 {
     fileRecords_ = { FileRecord{ true, "..", "[D] ..", "" } };
 
-    const auto get_directory_iterator = [&]() -> std::filesystem::directory_iterator
+    const auto getDirectoryIterator = [&]() -> std::filesystem::directory_iterator
     {
         try
         {            
@@ -1045,7 +1045,7 @@ inline void ImGui::FileBrowser::UpdateFileRecords()
         }
     };
 
-    for(auto &p : get_directory_iterator())
+    for(auto &p : getDirectoryIterator())
     {
         FileRecord rcd;
         try
